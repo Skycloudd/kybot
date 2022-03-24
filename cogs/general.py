@@ -32,7 +32,7 @@ class General(commands.Cog):
         Get the source code for the bot
         """
 
-        await self.bot.send_pretty(ctx, f"")
+        await self.bot.send_pretty(ctx, "https://github.com/Skycloudd/kybot")
 
     @commands.command()
     async def prefix(self, ctx):
