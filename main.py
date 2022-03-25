@@ -26,34 +26,6 @@ def setup_logging() -> None:
     logger.addHandler(console_handler)
 
 
-def check_config(filename: str) -> None:
-    try:
-        with open(filename, "r") as f:
-            f.read()
-    except FileNotFoundError:
-
-        token = input("bot setup - enter your bot token: ")
-        with open(filename, "w+") as f:
-            json.dump({"token": token}, f, indent=4)
-
-
-def check_settings(filename: str) -> None:
-    try:
-        with open(filename, "r") as f:
-            f.read()
-    except FileNotFoundError:
-        prefix = input("enter a space-seperated list of prefixes you want to use: ")
-        prefixes = prefix.split()
-
-        with open(filename, "w+") as f:
-            json.dump({"prefixes": prefixes}, f, indent=4)
-
-
-def check_jsons() -> None:
-    check_config("config.json")
-    check_settings("settings.json")
-
-
 def run_bot() -> None:
     bot = KyBot()
     bot.run()
@@ -61,7 +33,4 @@ def run_bot() -> None:
 
 if __name__ == "__main__":
     setup_logging()
-
-    check_jsons()
-
     run_bot()
